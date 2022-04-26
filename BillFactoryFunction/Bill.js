@@ -1,5 +1,5 @@
 
-const billSettings = () => {
+const BillSettings = () => {
     // initialising amounts
     let theCallCost = 0
     let theSmsCost = 0
@@ -12,38 +12,38 @@ const billSettings = () => {
 
 
     // Setting the call & sms cost
-    const setCallCost = $ => theCallCost = $
-    const setSmsCost = $ => theSmsCost = $
+    const setCallCost = callCost => theCallCost = callCost
+    const setSmsCost = smsCost => theSmsCost = smsCost
     // factorising the functions and pass it in ass a parameter
-    const getCallCost = $ => theCallCost
-    const getSmsCost = _ => theSmsCost
+    const getCallCost = () => theCallCost
+    const getSmsCost = () => theSmsCost
 
     // Setting the levels
-    const setWarningLevel = $ => theWarningLevel = $
-    const setCriticalLevel = $ => theCriticalLevel = $
+    const setWarningLevel = setWarning => theWarningLevel = setWarning
+    const setCriticalLevel = setCritical => theCriticalLevel = setCritical
     // getting the levels
-    const getWarningLevel = _ => theWarningLevel
-    const getCriticalLevel = _ => theCriticalLevel
+    const getWarningLevel = () => theWarningLevel
+    const getCriticalLevel = () => theCriticalLevel
 
     // get sms total cost
 
-    const makeCall = _ => !!hasReachedCriticalLevel ? theCallTotalCost += getCallCost() : theCallTotalCost
+    const makeCall = () => !!hasReachedCriticalLevel ? theCallTotalCost += getCallCost() : theCallTotalCost
 
-    const getCallTotalCost = $ => theCallTotalCost
+    const getCallTotalCost = () => theCallTotalCost
 
-    const sendSms = _ => !!hasReachedCriticalLevel ? theSmsTotalCost += getSmsCost() : theSmsTotalCost
-    const getSmsTotalCost = $ => theSmsTotalCost
+    const sendSms = () => !!hasReachedCriticalLevel ? theSmsTotalCost += getSmsCost() : theSmsTotalCost
+    const getSmsTotalCost = () => theSmsTotalCost
 
     // get sms total cost
 
     // get total amount and if total amount is greater than critical level do not add
-    const allTotalAmounts = _ => totalAmount += getCallTotalCost() + getSmsTotalCost()
-    const getAllTotalAmount = $ => totalAmount
+    const allTotalAmounts = () => totalAmount += getCallTotalCost() + getSmsTotalCost()
+    const getAllTotalAmount = () => totalAmount
 
-    const hasReachedCriticalLevel = _ => getAllTotalAmount() >= getCriticalLevel()
+    const hasReachedCriticalLevel = () => getAllTotalAmount() >= getCriticalLevel()
 
     // set warning levels
-    const totalClassName = $ => hasReachedCriticalLevel() ? 'danger' : getAllTotalAmount() >= getWarningLevel() && 'warning'
+    const totalClassName = () => hasReachedCriticalLevel() ? 'danger' : getAllTotalAmount() >= getWarningLevel() && 'warning'
 
     return {
         // retrieving the set functions
